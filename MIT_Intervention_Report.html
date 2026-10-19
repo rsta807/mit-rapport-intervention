@@ -336,9 +336,9 @@ async function makePdf(){if(!window.html2pdf)throw Error(tr("PDF engine not load
  const el=$("main").cloneNode(true);$$(".noprint,details,button,.hint",el).forEach(n=>n.remove());
  $$("input,textarea,select",el).forEach(i=>{const d=document.createElement("div");d.style.cssText="white-space:pre-wrap;border-bottom:1px solid #ccc;min-height:20px;padding:2px 0";d.textContent=i.type=="date"&&i.value?new Date(i.value+"T00:00").toLocaleDateString(LOC[LANG]):i.value;i.replaceWith(d)});
  $$("canvas",el).forEach(n=>n.remove());
- const w=document.createElement("div");w.style.cssText="color:#161638;background:#fff;font:13px Barlow,Arial,sans-serif";
+ const w=document.createElement("div");w.style.cssText="--bg:#fff;--card:#fff;--ink:#161638;--mute:#5d5f86;--line:#d5d6ea;color:#161638;background:#fff;width:794px;font:13px Barlow,Arial,sans-serif";
  w.innerHTML=`<div style="background:#1e1a92;color:#fff;padding:12px 16px;border-bottom:4px solid #a6e22e;font:700 20px Orbitron,Arial,sans-serif">MECH<span style="color:#a6e22e">·</span>I<span style="color:#a6e22e">·</span>TRONIC</div>`;
- w.appendChild(el);const blob=await html2pdf().set({margin:8,filename:fname(),html2canvas:{scale:2},jsPDF:{format:"a4"},pagebreak:{mode:["css","legacy"],avoid:[".st",".card"]}}).from(w).outputPdf("blob");
+ w.appendChild(el);const blob=await html2pdf().set({margin:8,filename:fname(),html2canvas:{scale:1.5,useCORS:true,backgroundColor:"#ffffff",scrollX:0,scrollY:0,windowWidth:794},jsPDF:{format:"a4"},pagebreak:{mode:["legacy"],avoid:[".st"]}}).from(w).outputPdf("blob");
  document.body.classList.remove("pdf");return blob}
 const b64=b=>new Promise(r=>{const f=new FileReader;f.onload=()=>r(f.result.split(",")[1]);f.readAsDataURL(b)});
 $("#btnSend").onclick=async()=>{const m=$("#sendMsg"),to=$("#to").value.trim(),from=$("#from").value.trim(),ok=v=>/^\S+@\S+\.\S+$/.test(v);m.className="stamp";
