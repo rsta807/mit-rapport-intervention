@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MECH·I·TRONIC – Intervention Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#1e1a92;--deep:#14106b;--lime:#a6e22e;--ink:#161638;--mute:#5d5f86;--line:#d5d6ea;--bg:#eef0fa;--card:#fff;--warn:#b45309;
+--head:"Orbitron","Eurostile","Bank Gothic",system-ui,sans-serif;--body:"Barlow",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+@media(prefers-color-scheme:dark){:root{--bg:#0c0a3a;--card:#17136e;--ink:#eef0ff;--mute:#a9abd8;--line:#3a35a8}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 var(--body)}
+header.top{position:sticky;top:0;z-index:5;background:var(--blue);color:#fff;display:flex;align-items:center;gap:12px;padding:10px 16px;flex-wrap:wrap;border-bottom:4px solid var(--lime)}
+.logo{display:flex;align-items:center;gap:10px;font:700 22px var(--head);letter-spacing:.04em}
+.logo svg{height:38px;width:auto}
+.logo i{color:var(--lime);font-style:normal}
+.sp{flex:1}
+#net{font-size:13px;padding:4px 10px;border-radius:99px;background:rgba(255,255,255,.14)}
+#net.off{background:var(--lime);color:var(--deep);font-weight:600}
+main{max-width:980px;margin:0 auto;padding:16px}
+section.card{background:var(--card);border:1px solid var(--line);border-radius:4px;margin-bottom:18px;border-left:6px solid var(--blue)}
+.card>h2{margin:0;padding:12px 16px;font:700 15px var(--head);letter-spacing:.06em;color:var(--blue);display:flex;align-items:center;gap:10px}
+@media(prefers-color-scheme:dark){.card>h2{color:var(--lime)}}
+.card>h2:before{content:"";width:12px;height:12px;background:var(--lime);flex:none}
+.body{padding:0 16px 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.full{grid-column:1/-1}
+label{display:block;font-size:13px;font-weight:600;color:var(--mute);margin-bottom:3px}
+input,select,textarea{width:100%;font:inherit;color:inherit;background:transparent;border:1px solid var(--line);border-radius:3px;padding:9px 10px;min-height:44px}
+textarea{resize:none;overflow:hidden;min-height:76px}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:3px solid var(--lime);outline-offset:1px;border-color:var(--blue)}
+.mit{background:var(--blue);color:#fff;border-radius:3px;padding:12px 14px;font-size:14px}
+.mit b{font-family:var(--head);font-size:13px;color:var(--lime)}
+.mit input{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.3);margin-top:6px}
+.mit input::placeholder{color:#c9caf5}
+button{font:600 15px var(--body);min-height:44px;padding:0 16px;border-radius:3px;border:2px solid var(--blue);background:var(--blue);color:#fff;cursor:pointer}
+button.alt{background:transparent;color:var(--blue)}
+@media(prefers-color-scheme:dark){button.alt{color:#fff;border-color:#fff}}
+button.lime{background:var(--lime);border-color:var(--lime);color:var(--deep)}
+button.x{min-height:36px;padding:0 10px;border-color:#c0392b;color:#c0392b;background:transparent}
+button[disabled]{opacity:.45;cursor:not-allowed;background-image:repeating-linear-gradient(135deg,transparent 0 6px,rgba(0,0,0,.12) 6px 8px)}
+.st{border:1px solid var(--line);border-radius:4px;margin-bottom:14px}
+.st>.sh{display:flex;gap:10px;align-items:center;background:var(--bg);padding:8px 10px}
+.st>.sh .tag{font:700 13px var(--head);background:var(--lime);color:var(--deep);padding:6px 10px;min-width:54px;text-align:center}
+.st .sb{padding:12px;display:grid;gap:12px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;background:var(--blue);color:#fff;padding:7px 8px;font-weight:600}
+td{padding:4px;border-bottom:1px solid var(--line)}
+td input{min-height:40px}
+td.q{width:84px}td.r{width:150px}td.d{width:44px}
+.sig{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.pad{border:2px dashed var(--blue);border-radius:3px;background:#fff;touch-action:none;width:100%;height:150px;display:block}
+.stamp{margin-top:6px;font-size:13px;color:var(--mute);min-height:20px}
+.stamp.ok{color:#2f7d0a;font-weight:600}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center}
+.send{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end}
+.hint{font-size:12.5px;color:var(--warn);margin-top:6px;display:none}
+.off .hint,.hint.on{display:block}
+details{margin-top:12px;font-size:14px}summary{cursor:pointer;color:var(--mute)}
+.att{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:8px}
+.att figure{margin:0;border:1px solid var(--line);border-radius:3px;overflow:hidden;position:relative;background:var(--bg)}
+.att img{width:100%;height:110px;object-fit:cover;display:block}
+.att figcaption{font-size:12px;padding:4px 6px;word-break:break-all}
+.att .x{position:absolute;top:4px;right:4px;min-height:30px;background:#fff;font-size:16px}
+.att .doc{height:110px;display:flex;align-items:center;justify-content:center;font:700 13px var(--head);color:var(--blue)}
+.fl{min-height:34px;padding:3px;background:transparent;border:2px solid transparent;border-radius:3px;line-height:0}
+.fl svg{width:30px;height:20px;border:1px solid rgba(255,255,255,.45)}
+.fl[aria-pressed=true]{border-color:var(--lime)}
+.langs{display:flex;gap:4px;flex-wrap:wrap}
+.refb{font:600 13px var(--head);background:rgba(255,255,255,.14);padding:4px 10px;border-radius:3px;letter-spacing:.04em}.refb b{color:var(--lime)}
+.cbr{display:flex;gap:8px;align-items:center;margin-top:10px}.cbr input{width:22px;min-height:22px;flex:none}.cbr label{margin:0}
+.pbrand{display:none}
+@media(max-width:560px){.send{grid-template-columns:1fr}}
+@media print{
+ header.top,.noprint,.hint,button,details{display:none!important}
+ body{background:#fff;color:#000}.pbrand{display:flex}
+ section.card{break-inside:avoid-page}.st{break-inside:avoid}
+ input,textarea,select{border:0;border-bottom:1px solid #999;padding:2px 0;min-height:0;color:#000;-webkit-appearance:none;appearance:none}
+}
+</style>
+</head>
+<body>
+<header class="top">
+ <div class="logo">
+  <svg viewBox="0 0 60 70" aria-hidden="true"><g fill="#fff"><rect x="0" y="16" width="12" height="12"/><rect x="0" y="34" width="12" height="12"/><rect x="38" y="0" width="14" height="14"/><rect x="38" y="52" width="14" height="14"/><path d="M12 28 L28 14 L38 14 L38 22 L30 22 L20 34 L20 52 L38 52 L38 58 L14 58 L14 34Z" opacity=".0"/><path d="M26 14h12v8H30L18 34v18h-8V32z"/></g><rect x="4" y="52" width="14" height="14" fill="#a6e22e"/></svg>
+  <span>MECH<i>·</i>I<i>·</i>TRONIC</span>
+ </div>
+ <span class="refb" id="refb" title="Report reference">REF <b id="ref">—</b></span>
+ <div class="sp"></div>
+ <div class="langs" role="group" data-keep><button class="fl" data-keep data-l="us" aria-label="English (US)" title="English (US)" aria-pressed="false"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path stroke="#b22234" stroke-width="1.54" d="M0 .77H30M0 3.85H30M0 6.93H30M0 10H30M0 13.08H30M0 16.16H30M0 19.23H30"/><rect width="13" height="10.8" fill="#3c3b6e"/><path stroke="#fff" stroke-width="1" stroke-dasharray="1 2.2" d="M1.5 2H12M1.5 4.5H12M1.5 7H12M1.5 9.5H12"/></svg></button><button class="fl" data-keep data-l="uk" aria-label="English (UK)" title="English (UK)" aria-pressed="false"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#012169"/><path d="M0 0L30 20M30 0L0 20" stroke="#fff" stroke-width="4"/><path d="M0 0L30 20M30 0L0 20" stroke="#c8102e" stroke-width="1.6"/><path d="M15 0V20M0 10H30" stroke="#fff" stroke-width="6"/><path d="M15 0V20M0 10H30" stroke="#c8102e" stroke-width="3.6"/></svg></button><button class="fl" data-keep data-l="fr" aria-label="Français" title="Français" aria-pressed="false"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="10" height="20" fill="#0055a4"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ef4135"/></svg></button><button class="fl" data-keep data-l="de" aria-label="Deutsch" title="Deutsch" aria-pressed="false"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="6.7" fill="#000"/><rect y="6.7" width="30" height="6.7" fill="#d00"/><rect y="13.4" width="30" height="6.6" fill="#ffce00"/></svg></button><button class="fl" data-keep data-l="it" aria-label="Italiano" title="Italiano" aria-pressed="false"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="10" height="20" fill="#009246"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ce2b37"/></svg></button></div>
+ <span id="net">Online</span>
+ <button class="alt lime" id="btnPrint" style="color:var(--deep)">Save / print PDF</button>
+</header>
+
+<main>
+<div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin:6px 0 16px"><h1 style="font:700 24px var(--head);color:var(--blue);margin:6px 0 16px;margin:0">Intervention Report</h1><div id="ref2" style="font:700 14px var(--head);color:var(--mute)"></div></div>
+
+<section class="card"><h2>Report header</h2><div class="body"><div class="grid">
+ <div><label for="author">Author (MIT)</label><input id="author" data-k autocomplete="name"></div>
+ <div><label for="sub">Subsidiary on the job</label><select id="sub" data-k><option value="">Select…</option><option>Lagniel</option><option>Betti</option><option>Neyret</option><option>RPP</option></select></div>
+ <div><label for="client">Client (beneficiary)</label><input id="client" data-k></div>
+ <div><label for="loc">Client location</label><input id="loc" data-k placeholder="City, State / Country"></div>
+ <div><label for="job">Job No.</label><input id="job" data-k></div>
+ <div><label for="mno">Machine No.</label><input id="mno" data-k></div>
+ <div><label for="mname">Machine name</label><input id="mname" data-k></div>
+ <div></div>
+ <div><label for="d1">Intervention start</label><input type="date" id="d1" data-k></div>
+ <div><label for="d2">Intervention end</label><input type="date" id="d2" data-k></div>
+ <div class="full"><label for="prob">Overall problem description</label><textarea id="prob" data-k></textarea></div>
+ <div class="full mit"><b>MIT contact</b><br>Neyret Inc. – Sugar Grove, Illinois, USA
+  <input id="phone" data-k aria-label="MIT phone number" placeholder="Phone: not yet available" inputmode="tel"></div>
+</div></div></section>
+
+<section class="card"><h2>Machine stations</h2><div class="body">
+ <div id="stations"></div>
+ <button id="addSt" class="lime">+ Add station</button>
+</div></section>
+
+<section class="card"><h2>Signatures</h2><div class="body"><div class="sig" id="sigs"></div></div></section>
+
+<section class="card noprint" id="sendCard"><h2>Send report</h2><div class="body">
+ <div class="grid">
+  <div><label for="from">Sender e-mail (MIT)</label><input id="from" type="email" data-k autocomplete="email" placeholder="name@mit.com"></div>
+  <div><label for="to">Client e-mail (recipient)</label><input id="to" type="email" data-k placeholder="name@company.com"></div>
+ </div>
+ <div class="cbr"><input type="checkbox" id="mitpart" data-c><label for="mitpart">Spare part supplied by MIT (survey Q5)</label></div>
+ <div class="cbr"><input type="checkbox" id="invoiced" data-c><label for="invoiced">Service invoiced (survey Q6)</label></div>
+ <p style="color:var(--mute);font-size:14px">On sending: the report goes immediately to both parties. The client receives a satisfaction survey 24 h later, with reminders at +24 h, +48 h and +72 h until it is completed.</p>
+ <div class="row"><button id="btnSend" class="lime">Send PDF by e-mail</button></div>
+ <div class="hint">No internet connection: e-mail sending is unavailable. The rest of the report still works.</div>
+ <div class="stamp" id="sendMsg"></div>
+ <details><summary>Sending settings (administrator)</summary>
+  <label for="hook" style="margin-top:8px">Mail endpoint URL (Power Automate, Make, EmailJS proxy…)</label>
+  <input id="hook" data-k placeholder="https://…">
+  <label for="surv" style="margin-top:8px">Satisfaction survey page URL</label>
+  <input id="surv" data-k placeholder="https://…/MIT_Satisfaction_Survey.html">
+  <p style="color:var(--mute);margin:6px 0 0">Without an endpoint, the app shares the PDF through the device's share menu, or downloads it and opens a pre-filled e-mail.</p>
+ </details>
+ <div class="row"><button class="alt x" id="reset">Reset report</button></div>
+</div></section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" async></script>
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const KEY="mit_report_v1";let S={f:{},st:[],sig:{mit:null,client:null}};
+let warned=0;function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){if(!warned++)alert(tr("Device storage is full: recent changes may be lost on reload. Send or print the report, then remove some attachments."))}}
+function load(){try{const d=JSON.parse(localStorage.getItem(KEY));if(d)S=d}catch(e){}}
+function grow(t){t.style.height="auto";t.style.height=t.scrollHeight+2+"px"}
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* i18n */
+const D=`Save / print PDF|Enregistrer / imprimer PDF|Als PDF speichern / drucken|Salva / stampa PDF
+Intervention Report|Rapport d'intervention|Einsatzbericht|Rapporto di intervento
+Report header|En-tête du rapport|Berichtskopf|Intestazione del rapporto
+Author (MIT)|Rédacteur (MIT)|Verfasser (MIT)|Redattore (MIT)
+Subsidiary on the job|Filiale en charge de l'affaire|Zuständige Niederlassung|Filiale responsabile della commessa
+Select…|Choisir…|Auswählen…|Seleziona…
+Client (beneficiary)|Client (bénéficiaire)|Kunde (Begünstigter)|Cliente (beneficiario)
+Client location|Localisation du client|Standort des Kunden|Sede del cliente
+Job No.|N° d'affaire|Auftragsnr.|N. commessa
+Machine No.|N° de machine|Maschinennr.|N. macchina
+Machine name|Nom de la machine|Maschinenname|Nome della macchina
+Intervention start|Début d'intervention|Einsatzbeginn|Inizio intervento
+Intervention end|Fin d'intervention|Einsatzende|Fine intervento
+Overall problem description|Description globale du problème|Allgemeine Problembeschreibung|Descrizione generale del problema
+MIT contact|Contact MIT|MIT-Kontakt|Contatto MIT
+Machine stations|Stations de la machine|Maschinenstationen|Stazioni della macchina
++ Add station|+ Ajouter une station|+ Station hinzufügen|+ Aggiungi stazione
+Signatures|Signatures|Unterschriften|Firme
+Send report|Envoyer le rapport|Bericht senden|Invia rapporto
+Recipient e-mail|E-mail du destinataire|E-Mail des Empfängers|E-mail del destinatario
+Send PDF by e-mail|Envoyer le PDF par e-mail|PDF per E-Mail senden|Invia PDF via e-mail
+Sending settings (administrator)|Paramètres d'envoi (administrateur)|Versandeinstellungen (Administrator)|Impostazioni di invio (amministratore)
+Mail endpoint URL (Power Automate, Make, EmailJS proxy…)|URL du point d'envoi e-mail (Power Automate, Make, proxy EmailJS…)|URL des Mail-Endpunkts (Power Automate, Make, EmailJS-Proxy …)|URL dell'endpoint e-mail (Power Automate, Make, proxy EmailJS…)
+Without an endpoint, the app shares the PDF through the device's share menu, or downloads it and opens a pre-filled e-mail.|Sans point d'envoi, l'application partage le PDF via le menu de partage de l'appareil, ou le télécharge et ouvre un e-mail pré-rempli.|Ohne Endpunkt teilt die App das PDF über das Teilen-Menü des Geräts oder lädt es herunter und öffnet eine vorausgefüllte E-Mail.|Senza endpoint, l'app condivide il PDF tramite il menu di condivisione del dispositivo, oppure lo scarica e apre un'e-mail precompilata.
+Reset report|Réinitialiser le rapport|Bericht zurücksetzen|Reimposta rapporto
+No internet connection: e-mail sending is unavailable. The rest of the report still works.|Pas de connexion internet : l'envoi par e-mail est indisponible. Le reste du rapport reste utilisable.|Keine Internetverbindung: Der E-Mail-Versand ist nicht verfügbar. Der Rest des Berichts bleibt nutzbar.|Nessuna connessione internet: l'invio e-mail non è disponibile. Il resto del rapporto resta utilizzabile.
+City, State / Country|Ville, État / Pays|Stadt, Bundesland / Land|Città, Stato / Paese
+Phone: not yet available|Téléphone : pas encore disponible|Telefon: noch nicht verfügbar|Telefono: non ancora disponibile
+MIT phone number|Numéro de téléphone MIT|MIT-Telefonnummer|Numero di telefono MIT
+Printed name|Nom en toutes lettres|Name in Druckbuchstaben|Nome in stampatello
+Station / group name|Nom de la station / du groupe|Name der Station / Gruppe|Nome della stazione / gruppo
+Station name|Nom de la station|Stationsname|Nome della stazione
+Actions performed|Actions réalisées|Durchgeführte Maßnahmen|Azioni eseguite
+Effectiveness checks|Contrôles d'efficacité|Wirksamkeitsprüfungen|Controlli di efficacia
+Spare parts consumed|Pièces de rechange consommées|Verbrauchte Ersatzteile|Ricambi consumati
+Reference|Référence|Referenz|Riferimento
+Description|Désignation|Beschreibung|Descrizione
+Qty|Qté|Menge|Q.tà
+Quantity|Quantité|Menge|Quantità
++ Add part|+ Ajouter une pièce|+ Teil hinzufügen|+ Aggiungi ricambio
+Remove line|Supprimer la ligne|Zeile entfernen|Rimuovi riga
+Photos & attachments|Photos et pièces jointes|Fotos und Anhänge|Foto e allegati
+📷 Take photo|📷 Prendre une photo|📷 Foto aufnehmen|📷 Scatta foto
+📎 Add file / photo|📎 Ajouter un fichier / une photo|📎 Datei / Foto hinzufügen|📎 Aggiungi file / foto
+Remove attachment|Supprimer la pièce jointe|Anhang entfernen|Rimuovi allegato
+MIT recommendations|Préconisations MIT|MIT-Empfehlungen|Raccomandazioni MIT
+Delete|Supprimer|Löschen|Elimina
+Delete station|Supprimer la station|Station löschen|Elimina stazione
+No station yet. Add one for each machine group.|Aucune station. Ajoutez-en une par groupe de la machine.|Noch keine Station. Fügen Sie pro Maschinengruppe eine hinzu.|Nessuna stazione. Aggiungine una per ogni gruppo della macchina.
+FILE|FICHIER|DATEI|FILE
+MIT – Author|MIT – Rédacteur|MIT – Verfasser|MIT – Redattore
+Client – Approver|Client – Approbateur|Kunde – Genehmiger|Cliente – Approvatore
+Not signed|Non signé|Nicht unterschrieben|Non firmato
+Withdraw signature|Retirer la signature|Unterschrift zurückziehen|Ritira la firma
+Sign|Signer|Unterschreiben|Firma
+Clear|Effacer|Löschen|Cancella
+Signed by {n} on {d}|Signé par {n} le {d}|Unterschrieben von {n} am {d}|Firmato da {n} il {d}
+Online|En ligne|Online|Online
+Offline mode|Mode hors ligne|Offline-Modus|Modalità offline
+Requires internet|Nécessite internet|Internet erforderlich|Richiede internet
+Delete station {n}?|Supprimer la station {n} ?|Station {n} löschen?|Eliminare la stazione {n}?
+{f} is larger than 1.5 MB and was skipped.|{f} dépasse 1,5 Mo et a été ignoré.|{f} ist größer als 1,5 MB und wurde übersprungen.|{f} supera 1,5 MB ed è stato ignorato.
+Could not add {f}|Impossible d'ajouter {f}|{f} konnte nicht hinzugefügt werden|Impossibile aggiungere {f}
+Device storage is full: recent changes may be lost on reload. Send or print the report, then remove some attachments.|Le stockage de l'appareil est plein : les dernières modifications peuvent être perdues au rechargement. Envoyez ou imprimez le rapport, puis supprimez des pièces jointes.|Der Gerätespeicher ist voll: Letzte Änderungen können beim Neuladen verloren gehen. Senden oder drucken Sie den Bericht und entfernen Sie dann einige Anhänge.|La memoria del dispositivo è piena: le ultime modifiche potrebbero andare perse al ricaricamento. Invia o stampa il rapporto, poi rimuovi alcuni allegati.
+Enter the signer's name first.|Saisissez d'abord le nom du signataire.|Geben Sie zuerst den Namen des Unterzeichners ein.|Inserisci prima il nome del firmatario.
+Please draw your signature.|Veuillez dessiner votre signature.|Bitte zeichnen Sie Ihre Unterschrift.|Disegna la tua firma.
+Withdraw this signature?|Retirer cette signature ?|Diese Unterschrift zurückziehen?|Ritirare questa firma?
+Erase the whole report?|Effacer tout le rapport ?|Den gesamten Bericht löschen?|Cancellare l'intero rapporto?
+Enter a valid e-mail address.|Saisissez une adresse e-mail valide.|Geben Sie eine gültige E-Mail-Adresse ein.|Inserisci un indirizzo e-mail valido.
+MIT signature required before sending.|Signature MIT requise avant l'envoi.|MIT-Unterschrift vor dem Senden erforderlich.|Firma MIT richiesta prima dell'invio.
+The client has not signed yet. Send anyway?|Le client n'a pas encore signé. Envoyer quand même ?|Der Kunde hat noch nicht unterschrieben. Trotzdem senden?|Il cliente non ha ancora firmato. Inviare comunque?
+Generating PDF…|Génération du PDF…|PDF wird erstellt…|Generazione del PDF…
+Report sent to|Rapport envoyé à|Bericht gesendet an|Rapporto inviato a
+Shared. Pick your mail app and send to|Partagé. Choisissez votre application de messagerie et envoyez à|Geteilt. Wählen Sie Ihre Mail-App und senden Sie an|Condiviso. Scegli la tua app di posta e invia a
+PDF downloaded. Attach it to the e-mail that just opened.|PDF téléchargé. Joignez-le à l'e-mail qui vient de s'ouvrir.|PDF heruntergeladen. Hängen Sie es an die soeben geöffnete E-Mail an.|PDF scaricato. Allegalo all'e-mail appena aperta.
+Sending failed:|Échec de l'envoi :|Senden fehlgeschlagen:|Invio non riuscito:
+Intervention report|Rapport d'intervention|Einsatzbericht|Rapporto di intervento
+Job|Affaire|Auftrag|Commessa
+machine|machine|Maschine|macchina
+Please find the intervention report attached.|Veuillez trouver ci-joint le rapport d'intervention.|Anbei finden Sie den Einsatzbericht.|In allegato il rapporto di intervento.
+Please find the intervention report attached ({f}).|Veuillez trouver ci-joint le rapport d'intervention ({f}).|Anbei finden Sie den Einsatzbericht ({f}).|In allegato il rapporto di intervento ({f}).
+PDF engine not loaded (needs one online load).|Moteur PDF non chargé (nécessite un premier chargement en ligne).|PDF-Engine nicht geladen (einmaliges Laden online erforderlich).|Motore PDF non caricato (richiede un primo caricamento online).
+Report reference|Référence du rapport|Berichtsreferenz|Riferimento del rapporto
+Sender e-mail (MIT)|E-mail de l'expéditeur (MIT)|E-Mail des Absenders (MIT)|E-mail del mittente (MIT)
+Client e-mail (recipient)|E-mail du client (destinataire)|E-Mail des Kunden (Empfänger)|E-mail del cliente (destinatario)
+Spare part supplied by MIT (survey Q5)|Pièce fournie par MIT (question 5 du questionnaire)|Von MIT gelieferte Ersatzteile (Umfrage Frage 5)|Ricambio fornito da MIT (domanda 5 del questionario)
+Service invoiced (survey Q6)|Prestation facturée (question 6 du questionnaire)|Leistung berechnet (Umfrage Frage 6)|Prestazione fatturata (domanda 6 del questionario)
+On sending: the report goes immediately to both parties. The client receives a satisfaction survey 24 h later, with reminders at +24 h, +48 h and +72 h until it is completed.|À l'envoi : le rapport part immédiatement aux deux parties. Le client reçoit un questionnaire de satisfaction 24 h plus tard, avec relances à +24 h, +48 h et +72 h tant qu'il n'est pas rempli.|Beim Senden: Der Bericht geht sofort an beide Parteien. Der Kunde erhält 24 Std. später eine Zufriedenheitsumfrage, mit Erinnerungen nach +24, +48 und +72 Std., bis sie ausgefüllt ist.|All'invio: il rapporto parte subito a entrambe le parti. Il cliente riceve un questionario di soddisfazione dopo 24 h, con solleciti a +24 h, +48 h e +72 h finché non è compilato.
+Satisfaction survey page URL|URL de la page du questionnaire de satisfaction|URL der Zufriedenheitsumfrage|URL del questionario di soddisfazione
+Enter a valid sender e-mail address.|Saisissez une adresse e-mail d'expéditeur valide.|Geben Sie eine gültige Absender-E-Mail-Adresse ein.|Inserisci un indirizzo e-mail del mittente valido.
+Fill in Subsidiary, Machine No., start date and Job No. to generate the report reference.|Renseignez la filiale, le n° de machine, la date de début et le n° d'affaire pour générer la référence du rapport.|Geben Sie Niederlassung, Maschinennr., Einsatzbeginn und Auftragsnr. ein, um die Berichtsreferenz zu erzeugen.|Compila filiale, n. macchina, data di inizio e n. commessa per generare il riferimento del rapporto.
+Satisfaction survey scheduled in 24 h.|Questionnaire de satisfaction programmé dans 24 h.|Zufriedenheitsumfrage in 24 Std. geplant.|Questionario di soddisfazione programmato tra 24 h.
+Survey not scheduled (endpoint and survey URL required).|Questionnaire non programmé (point d'envoi et URL du questionnaire requis).|Umfrage nicht geplant (Endpunkt und Umfrage-URL erforderlich).|Questionario non programmato (servono endpoint e URL).`.split("\n").map(l=>l.split("|")),M={};D.forEach(r=>M[r[0]]=r);
+const IDX={us:0,uk:0,fr:1,de:2,it:3},LOC={us:"en-US",uk:"en-GB",fr:"fr-FR",de:"de-DE",it:"it-IT"};
+let LANG="us";try{LANG=localStorage.getItem("mit_lang")||"us";if(!LOC[LANG])LANG="us"}catch(e){}
+const tr=s=>(M[s]&&M[s][IDX[LANG]])||s;
+function apply(root=document){
+ $$("label,h1,h2,option,button:not([data-keep]),summary,.mit b,th,p,.hint,.stamp,.doc",root).forEach(el=>{if(el.children.length)return;const k=el.dataset.en??(el.dataset.en=el.textContent.trim());el.textContent=tr(k)});
+ ["placeholder","aria-label","title"].forEach(a=>$$("["+a+"]",root).forEach(el=>{if(el.closest("[data-keep]"))return;const d="en"+a.replace(/\W/g,""),k=el.dataset[d]??(el.dataset[d]=el.getAttribute(a));el.setAttribute(a,tr(k))}))}
+function fmtAt(g){return g.iso?new Date(g.iso).toLocaleString(LOC[LANG],{day:"numeric",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit",second:"2-digit",timeZoneName:"short"}):g.at}
+function setLang(l){LANG=l;try{localStorage.setItem("mit_lang",l)}catch(e){}document.documentElement.lang=IDX[l]?["en","fr","de","it"][IDX[l]]:"en";
+ $$("[data-l]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l==l));renderSt();renderSigs();apply();net()}
+$$("[data-l]").forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+
+/* header fields */
+function bindFields(){
+ $$("[data-k]").forEach(el=>{const v=S.f[el.id];if(v!=null)el.value=v;
+  el.addEventListener("input",()=>{S.f[el.id]=el.value;if(el.tagName=="TEXTAREA")grow(el);save()})});
+ $$("textarea[data-k]").forEach(grow)}
+
+/* stations */
+function stHTML(s,i){return `<div class="st" data-i="${i}">
+ <div class="sh"><span class="tag">ST ${i+1}</span><input data-f="name" placeholder="Station / group name" value="${esc(s.name)}" aria-label="Station name"><button class="x" data-del title="Delete station">Delete</button></div>
+ <div class="sb">
+  <div><label>Actions performed</label><textarea data-f="actions">${esc(s.actions)}</textarea></div>
+  <div><label>Effectiveness checks</label><textarea data-f="checks">${esc(s.checks)}</textarea></div>
+  <div><label>Spare parts consumed</label><div style="overflow-x:auto"><table><thead><tr><th>Reference</th><th>Description</th><th>Qty</th><th></th></tr></thead><tbody>
+  ${s.parts.map((p,j)=>`<tr data-j="${j}"><td class="r"><input data-p="ref" value="${esc(p.ref)}" aria-label="Reference"></td><td><input data-p="desc" value="${esc(p.desc)}" aria-label="Description"></td><td class="q"><input data-p="qty" type="number" min="0" inputmode="numeric" value="${esc(p.qty)}" aria-label="Quantity"></td><td class="d"><button class="x" data-dp aria-label="Remove line">×</button></td></tr>`).join("")}
+  </tbody></table></div><div class="row"><button class="alt" data-ap>+ Add part</button></div></div>
+  <div><label>Photos &amp; attachments</label><div class="att">${(s.att||[]).map((a,j)=>`<figure data-a="${j}">${a.img?`<img src="${a.data}" alt="${esc(a.name)}">`:`<div class="doc">FILE</div>`}<figcaption>${a.img?"":`<a href="${a.data}" download="${esc(a.name)}">`}${esc(a.name)}${a.img?"":"</a>"}</figcaption><button class="x" data-da aria-label="Remove attachment">×</button></figure>`).join("")}</div>
+   <div class="row noprint"><button class="alt" data-cam>📷 Take photo</button><button class="alt" data-file>📎 Add file / photo</button>
+   <input type="file" data-cam-in accept="image/*" capture="environment" hidden><input type="file" data-file-in multiple hidden></div></div>
+  <div><label>MIT recommendations</label><textarea data-f="reco">${esc(s.reco)}</textarea></div>
+ </div></div>`}
+function renderSt(){const c=$("#stations");c.innerHTML=S.st.map(stHTML).join("")||'<p style="color:var(--mute)">No station yet. Add one for each machine group.</p>';apply(c);$$("textarea",c).forEach(grow)}
+$("#stations").addEventListener("input",e=>{const st=e.target.closest(".st");if(!st)return;const s=S.st[st.dataset.i];
+ if(e.target.dataset.f){s[e.target.dataset.f]=e.target.value;if(e.target.tagName=="TEXTAREA")grow(e.target)}
+ else if(e.target.dataset.p){s.parts[e.target.closest("tr").dataset.j][e.target.dataset.p]=e.target.value}save()});
+$("#stations").addEventListener("click",e=>{const st=e.target.closest(".st");if(!st)return;const i=+st.dataset.i,s=S.st[i];
+ if(e.target.closest("[data-del]")){if(confirm(tr("Delete station {n}?").replace("{n}",i+1))){S.st.splice(i,1);renderSt();save()}}
+ else if(e.target.closest("[data-ap]")){s.parts.push({ref:"",desc:"",qty:""});renderSt();save()}
+ else if(e.target.closest("[data-dp]")){s.parts.splice(+e.target.closest("tr").dataset.j,1);renderSt();save()}});
+$("#stations").addEventListener("click",e=>{const st=e.target.closest(".st");if(!st)return;
+ if(e.target.closest("[data-cam]"))$("[data-cam-in]",st).click();
+ else if(e.target.closest("[data-file]"))$("[data-file-in]",st).click();
+ else if(e.target.closest("[data-da]")){const s=S.st[+st.dataset.i];s.att.splice(+e.target.closest("figure").dataset.a,1);renderSt();save()}});
+$("#stations").addEventListener("change",async e=>{const st=e.target.closest(".st");if(!st||e.target.type!="file")return;const s=S.st[+st.dataset.i];s.att=s.att||[];
+ for(const f of e.target.files){try{
+  if(f.type.startsWith("image/"))s.att.push({name:f.name||"photo.jpg",img:1,data:await shrink(f)});
+  else if(f.size>1.5e6)alert(tr("{f} is larger than 1.5 MB and was skipped.").replace("{f}",f.name));
+  else s.att.push({name:f.name,img:0,data:await new Promise(r=>{const fr=new FileReader;fr.onload=()=>r(fr.result);fr.readAsDataURL(f)})});
+ }catch(err){alert(tr("Could not add {f}").replace("{f}",f.name))}}
+ renderSt();save()});
+function shrink(f){return new Promise((res,rej)=>{const u=URL.createObjectURL(f),i=new Image;i.onload=()=>{const k=Math.min(1,1280/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=i.width*k;c.height=i.height*k;c.getContext("2d").drawImage(i,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL("image/jpeg",.72))};i.onerror=rej;i.src=u})}
+$("#addSt").onclick=()=>{S.st.push({name:"",actions:"",checks:"",parts:[{ref:"",desc:"",qty:""}],att:[],reco:""});renderSt();save()};
+
+/* signatures */
+const SIGS=[["mit","MIT – Author"],["client","Client – Approver"]];
+function renderSigs(){const keep={};$$("#sigs [data-k2]").forEach(b=>{const c=$("canvas",b);if(c)keep[b.dataset.k2]={n:$("[data-sn]",b).value,u:c.dirty&&c.dirty()?c.toDataURL():""}});
+ $("#sigs").innerHTML=SIGS.map(([k,t])=>`<div data-k2="${k}"><label>${t}</label>
+ <input data-sn placeholder="Printed name" aria-label="${t}" value="${esc(S.sig[k]?.name||"")}" ${S.sig[k]?"disabled":""}>
+ <div style="margin-top:8px">${S.sig[k]?`<img class="pad" style="object-fit:contain" alt="Signature" src="${S.sig[k].img}">`:`<canvas class="pad"></canvas>`}</div>
+ <div class="stamp ${S.sig[k]?"ok":""}">${S.sig[k]?esc(tr("Signed by {n} on {d}").replace("{n}",S.sig[k].name).replace("{d}",fmtAt(S.sig[k]))):"Not signed"}</div>
+ <div class="row noprint">${S.sig[k]?`<button class="alt" data-un>Withdraw signature</button>`:`<button data-sg>Sign</button><button class="alt" data-cl>Clear</button>`}</div></div>`).join("");
+ $$("canvas.pad").forEach(initPad);apply($("#sigs"));$$("#sigs [data-k2]").forEach(bx=>{const k=keep[bx.dataset.k2],c=$("canvas",bx);if(!k||!c)return;$("[data-sn]",bx).value=k.n;if(k.u)c.load(k.u)})}
+function initPad(c){const r=c.getBoundingClientRect(),d=devicePixelRatio||1;c.width=r.width*d;c.height=150*d;const x=c.getContext("2d");x.scale(d,d);x.lineWidth=2.2;x.lineCap="round";x.strokeStyle="#14106b";let on=false,dirty=false;
+ const p=e=>{const b=c.getBoundingClientRect();return[e.clientX-b.left,e.clientY-b.top]};
+ c.onpointerdown=e=>{on=true;c.setPointerCapture(e.pointerId);x.beginPath();x.moveTo(...p(e))};
+ c.onpointermove=e=>{if(!on)return;x.lineTo(...p(e));x.stroke();dirty=true};
+ c.onpointerup=c.onpointercancel=()=>on=false;c.dirty=()=>dirty;c.load=u=>{const i=new Image;i.onload=()=>{x.drawImage(i,0,0,r.width,150);dirty=true};i.src=u}}
+$("#sigs").addEventListener("click",e=>{const box=e.target.closest("[data-k2]");if(!box)return;const k=box.dataset.k2,c=$("canvas",box);
+ if(e.target.closest("[data-cl]")){const x=c.getContext("2d");x.save();x.setTransform(1,0,0,1,0,0);x.clearRect(0,0,c.width,c.height);x.restore();c.onpointerdown=null;initPad(c)}
+ else if(e.target.closest("[data-sg]")){const n=$("[data-sn]",box).value.trim();if(!n)return alert(tr("Enter the signer's name first."));if(!c.dirty())return alert(tr("Please draw your signature."));
+  S.sig[k]={name:n,img:c.toDataURL("image/png"),iso:new Date().toISOString()};save();renderSigs()}
+ else if(e.target.closest("[data-un]")){if(confirm(tr("Withdraw this signature?"))){S.sig[k]=null;save();renderSigs()}}});
+
+/* connectivity */
+function net(){const on=navigator.onLine;$("#net").textContent=tr(on?"Online":"Offline mode");$("#net").className=on?"":"off";
+ $("#sendCard").classList.toggle("off",!on);$("#btnSend").disabled=!on;$("#btnSend").title=on?"":tr("Requires internet")}
+addEventListener("online",net);addEventListener("offline",net);
+
+/* PDF + send */
+const slug=s=>String(s||"").trim().replace(/[^\w]+/g,"-").replace(/^-+|-+$/g,"").toUpperCase();
+function mkRef(){const f=slug(S.f.sub),m=slug(S.f.mno),d=(S.f.d1||"").replace(/-/g,""),j=slug(S.f.job);return f&&m&&d&&j?`${f}-${m}-${d}-${j}`:""}
+function showRef(){const r=mkRef();$("#ref").textContent=r||"—";$("#ref2").textContent=r?"REF "+r:""}
+function bindChecks(){$$("[data-c]").forEach(el=>{el.checked=!!S.f[el.id];el.onchange=()=>{S.f[el.id]=el.checked;save()}})}
+document.addEventListener("input",showRef);
+const hasParts=()=>S.st.some(s=>s.parts.some(p=>(p.ref||p.desc||"").trim()));
+const fname=()=>`MIT_Report_${mkRef()||"draft"}.pdf`;
+$("#btnPrint").onclick=()=>print();
+async function makePdf(){if(!window.html2pdf)throw Error(tr("PDF engine not loaded (needs one online load)."));
+ document.body.classList.add("pdf");
+ const el=$("main").cloneNode(true);$$(".noprint,details,button,.hint",el).forEach(n=>n.remove());
+ $$("input,textarea,select",el).forEach(i=>{const d=document.createElement("div");d.style.cssText="white-space:pre-wrap;border-bottom:1px solid #ccc;min-height:20px;padding:2px 0";d.textContent=i.type=="date"&&i.value?new Date(i.value+"T00:00").toLocaleDateString(LOC[LANG]):i.value;i.replaceWith(d)});
+ $$("canvas",el).forEach(n=>n.remove());
+ const w=document.createElement("div");w.style.cssText="color:#161638;background:#fff;font:13px Barlow,Arial,sans-serif";
+ w.innerHTML=`<div style="background:#1e1a92;color:#fff;padding:12px 16px;border-bottom:4px solid #a6e22e;font:700 20px Orbitron,Arial,sans-serif">MECH<span style="color:#a6e22e">·</span>I<span style="color:#a6e22e">·</span>TRONIC</div>`;
+ w.appendChild(el);const blob=await html2pdf().set({margin:8,filename:fname(),html2canvas:{scale:2},jsPDF:{format:"a4"},pagebreak:{mode:["css","legacy"],avoid:[".st",".card"]}}).from(w).outputPdf("blob");
+ document.body.classList.remove("pdf");return blob}
+const b64=b=>new Promise(r=>{const f=new FileReader;f.onload=()=>r(f.result.split(",")[1]);f.readAsDataURL(b)});
+$("#btnSend").onclick=async()=>{const m=$("#sendMsg"),to=$("#to").value.trim(),from=$("#from").value.trim(),ok=v=>/^\S+@\S+\.\S+$/.test(v);m.className="stamp";
+ if(!ok(from))return m.textContent=tr("Enter a valid sender e-mail address.");
+ if(!ok(to))return m.textContent=tr("Enter a valid e-mail address.");
+ const ref=mkRef();if(!ref)return m.textContent=tr("Fill in Subsidiary, Machine No., start date and Job No. to generate the report reference.");
+ if(!S.sig.mit)return m.textContent=tr("MIT signature required before sending.");
+ if(!S.sig.client&&!confirm(tr("The client has not signed yet. Send anyway?")))return;
+ m.textContent=tr("Generating PDF…");
+ try{const blob=await makePdf(),subj=`${tr("Intervention report")} – ${ref} – ${S.f.mname||tr("machine")}`,hook=$("#hook").value.trim(),base=$("#surv").value.trim();
+  if(hook){const now=Date.now(),at=h=>new Date(now+h*36e5).toISOString();
+   const q=new URLSearchParams({ref,lang:LANG,client:S.f.client||"",job:S.f.job||"",machine:S.f.mname||"",parts:hasParts()?1:0,mit:$("#mitpart").checked?1:0,inv:$("#invoiced").checked?1:0});
+   const survey=base?{url:base+(base.includes("?")?"&":"?")+q,to,sendAt:at(24),remindAfterHours:[24,48,72],reminderAt:[at(48),at(72),at(96)],stopWhenAnswered:true}:null;
+   const r=await fetch(hook,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"send_report",ref,from,to,recipients:[from,to],subject:subj,filename:fname(),lang:LANG,pdfBase64:await b64(blob),survey})});
+   if(!r.ok)throw Error("Server answered "+r.status);
+   m.textContent=tr("Report sent to")+" "+from+", "+to+" · "+tr(survey?"Satisfaction survey scheduled in 24 h.":"Survey not scheduled (endpoint and survey URL required).");m.className="stamp ok";return}
+  const file=new File([blob],fname(),{type:"application/pdf"});
+  if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:subj,text:tr("Please find the intervention report attached.")});m.textContent=tr("Shared. Pick your mail app and send to")+" "+to+", "+from;m.className="stamp ok";return}
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=fname();a.click();
+  location.href=`mailto:${to}?cc=${encodeURIComponent(from)}&subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(tr("Please find the intervention report attached ({f}).").replace("{f}",fname()))}`;
+  m.textContent=tr("PDF downloaded. Attach it to the e-mail that just opened.");m.className="stamp ok"
+ }catch(err){m.textContent=tr("Sending failed:")+" "+err.message}};
+$("#reset").onclick=()=>{if(confirm(tr("Erase the whole report?"))){try{const h=S.f.hook;localStorage.removeItem(KEY)}catch(e){}location.reload()}};
+
+load();bindFields();bindChecks();showRef();if(!S.st.length)S.st.push({name:"",actions:"",checks:"",parts:[{ref:"",desc:"",qty:""}],att:[],reco:""});renderSt();renderSigs();net();setLang(LANG);
+</script>
+</body>
+</html>

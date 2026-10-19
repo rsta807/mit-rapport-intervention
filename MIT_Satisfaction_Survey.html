@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MECH·I·TRONIC – Satisfaction survey</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#1e1a92;--deep:#14106b;--lime:#a6e22e;--ink:#161638;--mute:#5d5f86;--line:#d5d6ea;--bg:#eef0fa;--card:#fff;--star:#e0a800;--warn:#b42318;--head:"Orbitron","Eurostile",system-ui,sans-serif;--body:"Barlow",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+@media(prefers-color-scheme:dark){:root{--bg:#0c0a3a;--card:#17136e;--ink:#eef0ff;--mute:#a9abd8;--line:#3a35a8;--warn:#ff9d92}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 var(--body)}
+header.top{position:sticky;top:0;z-index:5;background:var(--blue);color:#fff;display:flex;align-items:center;gap:12px;padding:10px 16px;flex-wrap:wrap;border-bottom:4px solid var(--lime)}
+.sp{flex:1}
+.logo{display:flex;align-items:center;gap:10px;font:700 22px var(--head);letter-spacing:.04em}
+.logo svg{height:38px;width:auto}
+.logo i{color:var(--lime);font-style:normal}
+
+main{max-width:760px;margin:0 auto;padding:16px}
+h1{font:700 22px var(--head);color:var(--blue);margin:6px 0 8px}@media(prefers-color-scheme:dark){h1{color:var(--lime)}}
+.refl{font:700 14px var(--head);color:var(--mute);margin:0 0 12px}.refl b{color:var(--ink)}
+.q{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--blue);border-radius:4px;padding:14px 16px;margin-bottom:14px}
+.q.na{opacity:.6;border-left-color:var(--line)}.q.miss{border-left-color:var(--warn);box-shadow:0 0 0 2px var(--warn)}
+.q h2{margin:0 0 10px;font:600 16px var(--body)}.q h2 span{font:700 13px var(--head);background:var(--lime);color:var(--deep);padding:3px 8px;margin-right:8px}
+.stars{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+button{font:inherit;cursor:pointer}
+.s{background:none;border:0;font-size:38px;line-height:1;min-width:44px;min-height:44px;color:var(--line);padding:0}.s.on{color:var(--star)}
+.dk{margin-left:auto;min-height:44px;padding:0 14px;border:2px solid var(--blue);border-radius:3px;background:transparent;color:var(--blue);font-weight:600}
+.dk[aria-pressed=true]{background:var(--blue);color:#fff}@media(prefers-color-scheme:dark){.dk{color:#fff;border-color:#fff}.dk[aria-pressed=true]{background:#fff;color:var(--deep)}}
+button:focus-visible,textarea:focus-visible{outline:3px solid var(--lime);outline-offset:1px}
+textarea{width:100%;margin-top:10px;font:inherit;color:inherit;background:transparent;border:1px solid var(--line);border-radius:3px;padding:9px 10px;min-height:64px;resize:vertical}
+.nab{font-weight:600;color:var(--mute)}
+#go{min-height:48px;padding:0 24px;border:0;border-radius:3px;background:var(--lime);color:var(--deep);font-weight:700;font-size:16px}#go[disabled]{opacity:.5}
+#msg{margin:10px 0;font-weight:600}#msg.err{color:var(--warn)}
+.done{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--lime);padding:20px;border-radius:4px}
+.fl{min-height:34px;padding:3px;background:transparent;border:2px solid transparent;border-radius:3px;line-height:0}
+.fl svg{width:30px;height:20px;border:1px solid rgba(255,255,255,.45)}
+.fl[aria-pressed=true]{border-color:var(--lime)}
+.langs{display:flex;gap:4px;flex-wrap:wrap}
+
+</style></head><body>
+<header class="top"><div class="logo">
+  <svg viewBox="0 0 60 70" aria-hidden="true"><g fill="#fff"><rect x="0" y="16" width="12" height="12"/><rect x="0" y="34" width="12" height="12"/><rect x="38" y="0" width="14" height="14"/><rect x="38" y="52" width="14" height="14"/><path d="M12 28 L28 14 L38 14 L38 22 L30 22 L20 34 L20 52 L38 52 L38 58 L14 58 L14 34Z" opacity=".0"/><path d="M26 14h12v8H30L18 34v18h-8V32z"/></g><rect x="4" y="52" width="14" height="14" fill="#a6e22e"/></svg>
+  <span>MECH<i>·</i>I<i>·</i>TRONIC</span>
+ </div>
+<div class="sp"></div><div class="langs" role="group" data-keep><button class="fl" data-keep data-l="us" aria-label="English (US)" title="English (US)" aria-pressed="false"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><path stroke="#b22234" stroke-width="1.54" d="M0 .77H30M0 3.85H30M0 6.93H30M0 10H30M0 13.08H30M0 16.16H30M0 19.23H30"/><rect width="13" height="10.8" fill="#3c3b6e"/><path stroke="#fff" stroke-width="1" stroke-dasharray="1 2.2" d="M1.5 2H12M1.5 4.5H12M1.5 7H12M1.5 9.5H12"/></svg></button><button class="fl" data-keep data-l="uk" aria-label="English (UK)" title="English (UK)" aria-pressed="false"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#012169"/><path d="M0 0L30 20M30 0L0 20" stroke="#fff" stroke-width="4"/><path d="M0 0L30 20M30 0L0 20" stroke="#c8102e" stroke-width="1.6"/><path d="M15 0V20M0 10H30" stroke="#fff" stroke-width="6"/><path d="M15 0V20M0 10H30" stroke="#c8102e" stroke-width="3.6"/></svg></button><button class="fl" data-keep data-l="fr" aria-label="Français" title="Français" aria-pressed="false"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="10" height="20" fill="#0055a4"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ef4135"/></svg></button><button class="fl" data-keep data-l="de" aria-label="Deutsch" title="Deutsch" aria-pressed="false"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="6.7" fill="#000"/><rect y="6.7" width="30" height="6.7" fill="#d00"/><rect y="13.4" width="30" height="6.6" fill="#ffce00"/></svg></button><button class="fl" data-keep data-l="it" aria-label="Italiano" title="Italiano" aria-pressed="false"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="10" height="20" fill="#009246"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ce2b37"/></svg></button></div>
+</header>
+<main>
+<h1 id="ttl"></h1><p class="refl" id="refl"></p><p id="intro"></p>
+<div id="qs"></div>
+<button id="go"></button><div id="msg" role="status"></div>
+<div id="thx" class="done" hidden></div>
+</main>
+<script>
+/* Administrator: URL that receives the answers (Power Automate / Make HTTP trigger). Receives JSON incl. a ready-made "csv" field. */
+const ENDPOINT="https://script.google.com/macros/s/AKfycbzTtz6y2IHwjnaTua-2XBzyMib2wYcFs-ml2R88jKM1mnpS3i3yFSWWMMvU5aWBuM2EdA/exec";
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const P=new URLSearchParams(location.search),REF=P.get("ref")||"",flag=k=>P.get(k)==="1";
+const IDX={us:0,uk:0,fr:1,de:2,it:3},LOC=["en","fr","de","it"];
+const T={
+ttl:["Satisfaction survey","Questionnaire de satisfaction","Zufriedenheitsumfrage","Questionario di soddisfazione"],
+intro:["Thank you for choosing MIT. Rate each point from 1 to 5 stars (or “Don’t know”) and add a comment if you wish.","Merci d’avoir choisi MIT. Notez chaque point de 1 à 5 étoiles (ou « Je ne sais pas ») et ajoutez un commentaire si vous le souhaitez.","Vielen Dank, dass Sie sich für MIT entschieden haben. Bewerten Sie jeden Punkt mit 1 bis 5 Sternen (oder „Weiß nicht“) und ergänzen Sie gern einen Kommentar.","Grazie per aver scelto MIT. Valuta ogni punto da 1 a 5 stelle (o « Non so ») e aggiungi un commento se lo desideri."],
+dk:["Don’t know","Je ne sais pas","Weiß nicht","Non so"],
+na:["Not applicable","Non applicable","Nicht zutreffend","Non applicabile"],
+cm:["Comment (optional)","Commentaire (facultatif)","Kommentar (optional)","Commento (facoltativo)"],
+send:["Submit my answers","Envoyer mes réponses","Antworten senden","Invia le risposte"],
+miss:["Please answer every question (a star rating or “Don’t know”).","Merci de répondre à chaque question (étoiles ou « Je ne sais pas »).","Bitte beantworten Sie jede Frage (Sterne oder „Weiß nicht“).","Rispondi a ogni domanda (stelle o « Non so »)."],
+err:["Sending failed:","Échec de l’envoi :","Senden fehlgeschlagen:","Invio non riuscito:"],
+thx:["Thank you for your feedback!","Merci pour votre retour !","Vielen Dank für Ihr Feedback!","Grazie per il tuo feedback!"],
+thx2:["Your answers have been recorded. You can close this page.","Vos réponses ont bien été enregistrées. Vous pouvez fermer cette page.","Ihre Antworten wurden gespeichert. Sie können diese Seite schließen.","Le tue risposte sono state registrate. Puoi chiudere questa pagina."],
+q1:["Was MIT quick enough to plan this intervention?","MIT a-t-il été assez rapide pour la planification de cette intervention ?","War MIT bei der Planung dieses Einsatzes schnell genug?","MIT è stata abbastanza rapida nella pianificazione di questo intervento?"],
+q2:["Was MIT’s technical level what you expected?","Le niveau technique de MIT a-t-il été à l’attendu ?","Entsprach das technische Niveau von MIT Ihren Erwartungen?","Il livello tecnico di MIT è stato quello atteso?"],
+q3:["Did the technician listen to you and was he/she committed?","L’intervenant a-t-il été à votre écoute et était-il investi ?","Hat der Techniker Ihnen zugehört und sich engagiert?","Il tecnico è stato attento alle vostre esigenze e coinvolto?"],
+q4:["Was the lead time satisfactory?","Le leadtime a-t-il été satisfaisant ?","War die Lieferzeit zufriedenstellend?","Il lead time è stato soddisfacente?"],
+q5:["Was the drawing up to date and did the part fit in place?","Le plan était-il à jour et la pièce s’est-elle montée en lieu et place ?","War die Zeichnung aktuell und passte das Teil an Ort und Stelle?","Il disegno era aggiornato e il pezzo si è montato correttamente al suo posto?"],
+q6:["How do you rate the value for money of this service?","Comment évaluez-vous le rapport qualité/prix de cette prestation ?","Wie bewerten Sie das Preis-Leistungs-Verhältnis dieser Leistung?","Come valuta il rapporto qualità/prezzo di questa prestazione?"],
+q7:["What is your overall satisfaction, and do you have any advice for our future collaboration?","Quelle est votre satisfaction globale et auriez-vous des conseils pour la suite de notre collaboration ?","Wie zufrieden sind Sie insgesamt, und haben Sie Empfehlungen für unsere weitere Zusammenarbeit?","Qual è la sua soddisfazione complessiva e ha suggerimenti per il proseguimento della nostra collaborazione?"]};
+const QS=[["q1",1],["q2",1],["q3",1],["q4",flag("parts")],["q5",flag("mit")],["q6",flag("inv")],["q7",1]].map(([id,on])=>({id,on}));
+const A={};QS.forEach(q=>A[q.id]={s:q.on?null:"NA",c:""});
+let LANG=(P.get("lang")||"").toLowerCase();try{LANG=IDX[LANG]!=null?LANG:(localStorage.getItem("mit_lang")||"us")}catch(e){LANG=IDX[LANG]!=null?LANG:"us"}if(IDX[LANG]==null)LANG="us";
+const t=k=>T[k][IDX[LANG]];
+function build(){$("#qs").innerHTML=QS.map((q,i)=>`<div class="q ${q.on?"":"na"}" id="c-${q.id}"><h2><span>Q${i+1}</span>${t(q.id)}</h2>`+(q.on?`<div class="stars" role="radiogroup" aria-label="Q${i+1}">${[1,2,3,4,5].map(n=>`<button class="s" role="radio" data-q="${q.id}" data-n="${n}" aria-label="${n}/5" aria-checked="false">★</button>`).join("")}<button class="dk" data-q="${q.id}" data-n="DK" aria-pressed="false">${t("dk")}</button></div><textarea data-c="${q.id}" aria-label="${t("cm")}" placeholder="${t("cm")}"></textarea>`:`<div class="nab">${t("na")}</div>`)+`</div>`).join("");
+ QS.forEach(q=>{if(q.on){paint(q.id);const x=$(`[data-c=${q.id}]`);x.value=A[q.id].c}})}
+function paint(id){const s=A[id].s;$$(`[data-q=${id}]`).forEach(b=>{const n=b.dataset.n;if(n==="DK")b.setAttribute("aria-pressed",s==="DK");else{const on=typeof s==="number"&&+n<=s;b.classList.toggle("on",on);b.setAttribute("aria-checked",s===+n)}})}
+function txt(){document.documentElement.lang=LOC[IDX[LANG]];$("#ttl").textContent=t("ttl");$("#intro").textContent=t("intro");$("#go").textContent=t("send");$("#refl").textContent=REF?"REF "+REF:"";document.title="MECH·I·TRONIC – "+t("ttl");$$("[data-l]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l==LANG));$("#thx").innerHTML=`<h1>${t("thx")}</h1><p>${t("thx2")}</p>`;$("#msg").textContent=""}
+function setLang(l){LANG=l;try{localStorage.setItem("mit_lang",l)}catch(e){}$$("textarea[data-c]").forEach(x=>A[x.dataset.c].c=x.value);build();txt()}
+$$("[data-l]").forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+$("#qs").addEventListener("click",e=>{const b=e.target.closest("[data-q]");if(!b)return;const a=A[b.dataset.q],n=b.dataset.n==="DK"?"DK":+b.dataset.n;a.s=a.s===n&&n==="DK"?null:n;paint(b.dataset.q);$("#c-"+b.dataset.q).classList.remove("miss")});
+$("#qs").addEventListener("input",e=>{if(e.target.dataset.c)A[e.target.dataset.c].c=e.target.value});
+const csvc=v=>`"${String(v??"").replace(/"/g,'""')}"`;
+function finish(){$("#qs").hidden=$("#go").hidden=true;$(".refl").hidden=$("#intro").hidden=true;$("#thx").hidden=false}
+$("#go").onclick=async()=>{const m=$("#msg");m.className="";
+ const miss=QS.filter(q=>q.on&&A[q.id].s==null);QS.forEach(q=>$("#c-"+q.id).classList.toggle("miss",miss.includes(q)));
+ if(miss.length){m.className="err";m.textContent=t("miss");$("#c-"+miss[0].id).scrollIntoView({behavior:"smooth",block:"center"});return}
+ const at=new Date().toISOString(),meta={ref:REF,submitted_at:at,lang:LANG,client:P.get("client")||"",job:P.get("job")||"",machine:P.get("machine")||""};
+ const head=[...Object.keys(meta),...QS.flatMap(q=>[q.id+"_score",q.id+"_comment"])],row=[...Object.values(meta),...QS.flatMap(q=>[A[q.id].s,A[q.id].c])];
+ const csv=head.map(csvc).join(",")+"\r\n"+row.map(csvc).join(","),filename=`Satisfaction_${REF||"no-ref"}.csv`;
+ $("#go").disabled=true;
+ try{if(ENDPOINT){const r=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({action:"survey_answers",...meta,answers:A,filename,csv})});if(!r.ok)throw Error("Server answered "+r.status)}
+  else{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv"}));a.download=filename;a.click()}
+  try{localStorage.setItem("mit_sat_"+REF,"1")}catch(e){}finish()}
+ catch(err){m.className="err";m.textContent=t("err")+" "+err.message;$("#go").disabled=false}};
+build();txt();try{if(REF&&localStorage.getItem("mit_sat_"+REF))finish()}catch(e){}
+</script></body></html>
